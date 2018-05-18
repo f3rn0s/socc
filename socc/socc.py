@@ -8,7 +8,7 @@ class socc:
     def send(self, message):
         self.socket.send(message.encode())
 
-    def recv(self, amount):
+    def recv(self, amount=1024):
         return self.socket.recv(amount).decode()
 
     def duplicate(self):
