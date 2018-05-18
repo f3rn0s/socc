@@ -11,5 +11,8 @@ class socc:
     def recv(self, amount):
         return self.socket.recv(amount).decode()
 
+    def duplicate(self):
+        return self.socket.dup()
+
     def close(self):
         self.socket.close()
