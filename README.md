@@ -28,7 +28,7 @@ import socc
 
 def gen_secret(s, key):
   for i in range(0, 100):
-    s.send(key) + chr(i)
+    s.send(key + chr(i))
     if(s.recv()[10] = 'e'):
       return chr(i)
 
