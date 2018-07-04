@@ -1,4 +1,5 @@
 import socket
+import telnetlib
 
 class socc:
     def __init__(self, host, port):
@@ -20,6 +21,11 @@ class socc:
 
     def duplicate(self):
         return self.socket.dup()
+
+    def interact(self):
+        t = telnetlib.Telnet()
+        t.sock = self.socket
+        t.interact()
 
     def close(self):
         self.socket.close()
