@@ -13,6 +13,11 @@ class socc:
     def recv(self, amount=1024):
         return self.socket.recv(amount).decode()
 
+    def ignore(self, number_of_lines, amount=1024):
+        for i in range(0, number_of_lines):
+            self.socket.recv(amount)
+        return
+
     def duplicate(self):
         return self.socket.dup()
 
