@@ -11,8 +11,16 @@ class socc:
             message += "\n"
         self.socket.send(message.encode())
 
+    def send_bytes(self, message):
+        if message[-1:] != b"\n":
+            message += b"\n"
+        self.socket.send(message)
+
     def recv(self, amount=1024):
         return self.socket.recv(amount).decode()
+
+    def recv_bytes(self, amount=1024):
+        return self.socket.recv(amount)
 
     def ignore(self, number_of_lines=1, amount=1024):
         for i in range(0, number_of_lines):
