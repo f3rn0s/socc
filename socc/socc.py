@@ -6,6 +6,8 @@ class socc:
         self.socket.connect((host, port))
 
     def send(self, message):
+        if message[-1:] != "\n":
+            message += "\n"
         self.socket.send(message.encode())
 
     def recv(self, amount=1024):
