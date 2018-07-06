@@ -25,7 +25,6 @@ class socc:
     def ignore(self, number_of_lines=1, amount=1024):
         for i in range(0, number_of_lines):
             self.socket.recv(amount)
-        return
 
     def duplicate(self):
         return self.socket.dup()
