@@ -39,6 +39,33 @@ s.send('Hello World!'.encode('utf-8'))
 s.close()
 ```
 
-#### Socket Extras
+#### Socket Functions
 
+```
+__init__(self, host, port)
+    Create a socket connection to given host and port.
 
+close(self)
+    Closes the socket.
+
+duplicate(self)
+    Returns a new socc object of the same host and port.
+
+ignore(self, number_of_lines=1, amount=1024)
+    Recieve and ignore the specified amount of lines from the socket.
+
+interact(self)
+    Allows the user to interact with the socket.
+
+recv(self, amount=1024)
+    Recieve a string over the socket.
+
+recv_bytes(self, amount=1024)
+    Recieve a bytes object over the socket.
+
+send(self, message)
+    Send a string over the socket.
+
+send_bytes(self, message)
+    Send a bytes object over the socket.
+```
