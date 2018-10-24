@@ -1,8 +1,7 @@
 # socc
 
-Socc is designed to provide a simple little wrapper for the creation and management of a connection-based socket.
+Socc is a simply library designed to provide a simple wrapper for the creation and management of connection-based sockets.
 It just makes the code a tiny bit cleaner.
-
 
 #### socc vs socket
 
