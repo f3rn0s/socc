@@ -37,7 +37,7 @@ class socc:
 
     def duplicate(self):
         """Returns a new socc object of the same host and port."""
-        return socc.socc(self._host, self._port)
+        return socc(self._host, self._port)
 
     def interact(self):
         """Allows the user to interact with the socket."""
