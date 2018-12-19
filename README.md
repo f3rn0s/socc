@@ -1,8 +1,7 @@
 # socc
 
-Socc is designed to provide a simple little wrapper for the creation and management of a connection-based socket.
+Socc is a simply library designed to provide a simple wrapper for the creation and management of connection-based sockets.
 It just makes the code a tiny bit cleaner.
-
 
 #### socc vs socket
 
@@ -39,7 +38,7 @@ s.send('Hello World!'.encode('utf-8'))
 s.close()
 ```
 
-#### Socket Functions
+#### Socc Functions
 
 ```
 __init__(self, host, port)
@@ -54,6 +53,7 @@ duplicate(self)
 ignore(self, number_of_lines=1, amount=1024)
     Recieve and ignore the specified amount of lines from the socket.
 
+#Requires telnetlib
 interact(self)
     Allows the user to interact with the socket.
 
