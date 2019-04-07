@@ -22,18 +22,18 @@ class socc:
             message += b"\n"
         self.socket.send(message)
 
-    def recv(self, amount=1024):
+    def recv(self, bufsize=1024):
         """Recieve a string over the socket."""
-        return self.socket.recv(amount).decode()
+        return self.socket.recv(bufsize).decode()
 
-    def recv_bytes(self, amount=1024):
+    def recv_bytes(self, bufsize=1024):
         """Recieve a bytes object over the socket."""
-        return self.socket.recv(amount)
+        return self.socket.recv(bufsize)
 
-    def ignore(self, number_of_lines=1, amount=1024):
-        """Recieve and ignore the specified amount of lines from the socket."""
+    def ignore(self, number_of_lines=1, bufsize=1024):
+        """Recieve and ignore the specified bufsize of lines from the socket."""
         for i in range(0, number_of_lines):
-            self.socket.recv(amount)
+            self.socket.recv(bufsize)
 
     def duplicate(self):
         """Returns a new socc object of the same host and port."""
