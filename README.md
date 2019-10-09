@@ -1,7 +1,7 @@
 # socc
 
-Socc is a simply library designed to provide a simple wrapper for the creation and management of connection-based sockets.
-It just makes the code a tiny bit cleaner.
+Socc is a simple library designed to provide a wrapper for the creation and management of connection-based sockets.
+It is very useful for writing socket CTF challenge solutions.
 
 #### socc vs socket
 
