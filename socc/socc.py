@@ -3,6 +3,10 @@ import telnetlib
 
 class socc:
     """A small wrapper class for socket to provide cleaner code."""
+
+    """Default Line Ending"""
+    lineending = "\r\n"
+    
     def __init__(self, host: str, port: int) -> None:
         """Create a socket connection to given host and port."""
         self._host = host
@@ -12,14 +16,14 @@ class socc:
 
     def send(self, message: str) -> None:
         """Send a string over the socket."""
-        if message[-1:] != "\n":
-            message += "\n"
+        if message[-len(self.lineending):] != self.lineending:
+            message += self.lineending
         self.socket.send(message.encode())
 
     def send_bytes(self, message: bytes) -> None:
         """Send a bytes object over the socket."""
-        if message[-1:] != b"\n":
-            message += b"\n"
+        if message[-len(self.lineending.encode()):] != self.lineending.encode():
+            message += self.lineending.encode()
         self.socket.send(message)
 
     def recv(self, bufsize=1024) -> str:
@@ -34,6 +38,9 @@ class socc:
         """Recieve and ignore the specified bufsize of lines from the socket."""
         for i in range(0, number_of_lines):
             self.socket.recv(bufsize)
+
+    def set_line_ending(self, lineending: str) -> None:
+        self.lineending = lineending
 
     def duplicate(self) -> socc:
         """Returns a new socc object of the same host and port."""
