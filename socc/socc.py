@@ -40,6 +40,7 @@ class socc:
             self.socket.recv(bufsize)
 
     def set_line_ending(self, lineending: str) -> None:
+        """Change the default line ending"""
         self.lineending = lineending
 
     def duplicate(self):
