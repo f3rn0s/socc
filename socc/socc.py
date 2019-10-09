@@ -42,7 +42,7 @@ class socc:
     def set_line_ending(self, lineending: str) -> None:
         self.lineending = lineending
 
-    def duplicate(self) -> socc:
+    def duplicate(self):
         """Returns a new socc object of the same host and port."""
         return socc(self._host, self._port)
 
