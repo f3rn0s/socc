@@ -41,31 +41,33 @@ s.close()
 #### Socc Functions
 
 ```
-__init__(self, host, port)
+__init__(self, host: str, port: int) -> None
     Create a socket connection to given host and port.
 
-close(self)
+close(self) -> None
     Closes the socket.
 
 duplicate(self)
     Returns a new socc object of the same host and port.
 
-ignore(self, number_of_lines=1, amount=1024)
-    Recieve and ignore the specified amount of lines from the socket.
+ignore(self, number_of_lines: int = 1, bufsize: int = 1024) -> None
+    Recieve and ignore the specified bufsize of lines from the socket.
 
-#Requires telnetlib
-interact(self)
+interact(self) -> None
     Allows the user to interact with the socket.
 
-recv(self, amount=1024)
+recv(self, bufsize=1024) -> str
     Recieve a string over the socket.
 
-recv_bytes(self, amount=1024)
+recv_bytes(self, bufsize: int = 1024) -> bytes
     Recieve a bytes object over the socket.
 
-send(self, message)
+send(self, message: str) -> None
     Send a string over the socket.
 
-send_bytes(self, message)
+send_bytes(self, message: bytes) -> None
     Send a bytes object over the socket.
+
+set_line_ending(self, lineending: str) -> None
+    Change the default line ending
 ```
