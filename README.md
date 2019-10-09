@@ -33,7 +33,7 @@ s.connect((hostname, port))
 
 x = s.recv(1024).decode()
 
-s.send('Hello World!'.encode('utf-8'))
+s.send('Hello World!\r\n'.encode('utf-8'))
 
 s.close()
 ```
