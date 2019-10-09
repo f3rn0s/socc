@@ -3,48 +3,48 @@ import telnetlib
 
 class socc:
     """A small wrapper class for socket to provide cleaner code."""
-    def __init__(self, host, port):
+    def __init__(self, host: str, port: int) -> None:
         """Create a socket connection to given host and port."""
         self._host = host
         self._port = port
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.connect((host, port))
 
-    def send(self, message):
+    def send(self, message: str) -> None:
         """Send a string over the socket."""
         if message[-1:] != "\n":
             message += "\n"
         self.socket.send(message.encode())
 
-    def send_bytes(self, message):
+    def send_bytes(self, message: bytes) -> None:
         """Send a bytes object over the socket."""
         if message[-1:] != b"\n":
             message += b"\n"
         self.socket.send(message)
 
-    def recv(self, bufsize=1024):
+    def recv(self, bufsize=1024) -> str:
         """Recieve a string over the socket."""
         return self.socket.recv(bufsize).decode()
 
-    def recv_bytes(self, bufsize=1024):
+    def recv_bytes(self, bufsize: int = 1024) -> bytes:
         """Recieve a bytes object over the socket."""
         return self.socket.recv(bufsize)
 
-    def ignore(self, number_of_lines=1, bufsize=1024):
+    def ignore(self, number_of_lines : int = 1, bufsize: int = 1024) -> None:
         """Recieve and ignore the specified bufsize of lines from the socket."""
         for i in range(0, number_of_lines):
             self.socket.recv(bufsize)
 
-    def duplicate(self):
+    def duplicate(self) -> socc:
         """Returns a new socc object of the same host and port."""
         return socc(self._host, self._port)
 
-    def interact(self):
+    def interact(self) -> None:
         """Allows the user to interact with the socket."""
         t = telnetlib.Telnet()
         t.sock = self.socket
         t.interact()
 
-    def close(self):
+    def close(self) -> None:
         """Closes the socket."""
         self.socket.close()
