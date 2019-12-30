@@ -1,12 +1,13 @@
+"""Designed to make socket based CTF challanges easier."""
 import socket
 import telnetlib
 
 class socc:
     """A small wrapper class for socket to provide cleaner code."""
 
-    """Default Line Ending"""
-    lineending = "\r\n"
-    
+    #Default Line Ending
+    lineending = "\n"
+
     def __init__(self, host: str, port: int) -> None:
         """Create a socket connection to given host and port."""
         self._host = host
@@ -34,9 +35,9 @@ class socc:
         """Recieve a bytes object over the socket."""
         return self.socket.recv(bufsize)
 
-    def ignore(self, number_of_lines : int = 1, bufsize: int = 1024) -> None:
+    def ignore(self, number_of_lines: int = 1, bufsize: int = 1024) -> None:
         """Recieve and ignore the specified bufsize of lines from the socket."""
-        for i in range(0, number_of_lines):
+        for _ in range(0, number_of_lines):
             self.socket.recv(bufsize)
 
     def set_line_ending(self, lineending: str) -> None:
@@ -49,9 +50,9 @@ class socc:
 
     def interact(self) -> None:
         """Allows the user to interact with the socket."""
-        t = telnetlib.Telnet()
-        t.sock = self.socket
-        t.interact()
+        telnet_connection = telnetlib.Telnet()
+        telnet_connection.sock = self.socket
+        telnet_connection.interact()
 
     def close(self) -> None:
         """Closes the socket."""
